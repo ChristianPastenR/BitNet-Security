@@ -1,0 +1,55 @@
+<resources>
+    <!--Nombre de la app-->>
+    <string name="app_name">BitNet Security</string>
+
+    <!--Main activity (Login Screen) -->
+    <string name="txt_view_usuario">Usuario</string>
+    <string name="txt_view_clave">Clave</string>
+    <string name="input_usuario">Usuario</string>
+    <string name="input_clave">Clave</string>
+    <string name="btn_ingresar">Ingresar</string>
+    <string name="check_box_recordar_usuario">Recordar usuario</string>
+    <string name="txt_href_crear_cuenta">Crear una cuenta</string>
+
+
+    <string name="btn_crear_reporte">Crear reporte</string>
+    <string name="title_activity_main2">MainActivity2</string>
+
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+
+    <!--Registro-->
+    <string name="registro">Registra tus datos</string>
+    <string name="cargo">Cargo</string>
+    <string name="rut">RUT</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellido">Apellido</string>
+    <string name="telefono">Teléfono</string>
+    <string name="fulltime">Full-time</string>
+    <string name="parttime">Part-time</string>
+    <string name="btn_siguiente">Siguiente</string>
+
+    <string name="ya_casi">Ya casi terminas</string>
+    <string name="contrasenia">Contraseña</string>
+    <string name="contrasenia_confirmar">Confirmar contraseña</string>
+    <string name="btn_terminar">Terminar</string>
+
+
+    <!--Drawer, no se muestran-->
+    <string name="nav_draw_open">Abrir Drawer</string>
+    <string name="nav_draw_close">Cerrar Drawer</string>
+
+    <!--Drawer, menu lateral-->
+    <string name="nav_reporte">Reporte</string>
+    <string name="nav_perfiles">Perfiles</string>
+    <string name="nav_marcar">Marcar</string>
+    <string name="nav_horario">Horario</string>
+    <string name="btn_salir">Salir</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>

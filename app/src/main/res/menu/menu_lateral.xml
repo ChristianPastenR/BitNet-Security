@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    >
+
+
+    <item
+        android:id="@+id/ope_reporte"
+        android:icon="@drawable/icon_reporte_foreground"
+        android:title="@string/nav_reporte" />
+    <item
+        android:id="@+id/ope_perfiles"
+        android:icon="@drawable/icon_perfiles_foreground"
+        android:title="@string/nav_perfiles" />
+    <item
+        android:id="@+id/ope_marcar"
+        android:enabled="false"
+        android:icon="@drawable/icon_marcar_foreground"
+        android:title="@string/nav_marcar" />
+    <item
+        android:id="@+id/ope_horario"
+        android:enabled="false"
+        android:icon="@drawable/icon_horario_foreground"
+        android:title="@string/nav_horario" ></item>
+
+
+</menu>
