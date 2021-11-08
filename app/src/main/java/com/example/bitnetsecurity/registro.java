@@ -25,6 +25,7 @@ public class registro extends AppCompatActivity {
 
     public void btn_siguiente (View v){
 
+        /**     Recuperar los campos
         EditText carg = this.findViewById(R.id.txt_cargo);
         String cargo = carg.getText().toString();
 
@@ -39,18 +40,14 @@ public class registro extends AppCompatActivity {
 
         EditText phon = this.findViewById(R.id.txt_phone);
         String phone = phon.getText().toString();
+        **/
 
+        /**
+         * LOGICA AQUI
+         */
 
-
-
-
-        Usuario u = new Usuario();
-        u.setCargo(cargo);
-        u.setRut(rut);
-        u.setNombre(nombre);
-        u.setApellido(apellido);
-        u.setTelefono(phone);
-        System.out.println(u.toString());
+        Intent i = new Intent(this,registro_final.class);
+        startActivity(i);
 
     }
 

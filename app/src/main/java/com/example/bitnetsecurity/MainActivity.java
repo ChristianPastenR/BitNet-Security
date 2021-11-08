@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Html;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -38,6 +41,16 @@ public class MainActivity extends AppCompatActivity {
 
         //Mediante la validacion enviar al layout principal
         if(usertxt.equals("user") && passtxt.equals("123")){
+
+            CheckBox cbRecuerdame = (CheckBox)findViewById(R.id.cbRecordar);
+            boolean check = cbRecuerdame.isChecked();
+            if(check==true){
+                SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(this);
+                SharedPreferences.Editor editor = datos.edit();
+                editor.putString("user",usertxt);
+                editor.apply();
+            }
+
             Intent i = new Intent(this,principal.class);
             startActivity(i);
         }else if(usertxt.equals("user")&& passtxt.equals("")){
@@ -81,8 +94,15 @@ public class MainActivity extends AppCompatActivity {
         builder.show();
     }
 
-
-
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(this);
+        String usertxt = datos.getString("user","");
+        if(!usertxt.equals("")){
+            Intent i = new Intent(this,principal.class);
+            startActivity(i);
+        }
+    }
 }
 

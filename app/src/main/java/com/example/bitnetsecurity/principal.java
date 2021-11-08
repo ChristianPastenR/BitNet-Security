@@ -5,7 +5,9 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -61,12 +63,11 @@ public class principal extends AppCompatActivity {
                 if(id==R.id.ope_reporte){
                     //Segun la id recuperada, llamamos al fragmento correspondiente
                     fragmentManager.beginTransaction().replace(R.id.contenedor,new reportes()).commit();
-
-                    Toast.makeText(getApplicationContext(), "Vas al reporte", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "Vas al reporte", Toast.LENGTH_SHORT).show();
                 }else if(id==R.id.ope_perfiles){
                     //Segun la id recuperada, llamamos al fragmento correspondiente
                     fragmentManager.beginTransaction().replace(R.id.contenedor,new perfiles()).commit();
-                    Toast.makeText(getApplicationContext(), "Vas a los perfiles", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "Vas a los perfiles", Toast.LENGTH_SHORT).show();
                 }
                 return false;
             }
@@ -77,8 +78,11 @@ public class principal extends AppCompatActivity {
 
         //Habilitar el DrawerLayout
         DrawerLayout dl = (DrawerLayout) findViewById(R.id.drawer_layout_principal);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //SET CUSTOM HOME BUTTON?????
         getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         //Habilitar DraweLayout se abra y cierre
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this,
@@ -117,9 +121,15 @@ public class principal extends AppCompatActivity {
 
     //Accion boton salir
     public void salir (View v){
-        Intent i = new Intent(this,MainActivity.class);
-        startActivity(i);
+        //Accedemos a shared preferences para eliminar el user recordado
+        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = datos.edit();
+        editor.remove("user");
+        editor.apply();
+        //finish para cerrar la app y volver a la primera pantalla
+        finish();
     }
+
 
 
 

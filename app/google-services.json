@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1070065735959",
+    "project_id": "bitnet-739b0",
+    "storage_bucket": "bitnet-739b0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1070065735959:android:028b0c48ff4451817fbf52",
+        "android_client_info": {
+          "package_name": "com.example.bitnetsecurity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1070065735959-7kviggm6v32ok4amvvm4f3otpchfo78t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArLqYU6O75IbfHkMwJi1gFbzo0j3_vgpE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1070065735959-7kviggm6v32ok4amvvm4f3otpchfo78t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

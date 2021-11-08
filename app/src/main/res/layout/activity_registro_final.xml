@@ -10,73 +10,125 @@
     tools:layout_editor_absoluteY="-65dp">
 
     <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="62dp"
-        android:layout_height="28dp"
-        android:backgroundTint="#00FFFFFF"
-        android:clickable="true"
+        android:id="@+id/imageButton3"
+        android:layout_width="57dp"
+        android:layout_height="56dp"
+        android:backgroundTint="#02FFFFFF"
         android:onClick="atras"
-        app:srcCompat="@drawable/icon_back_foreground"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="7dp" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_terminar"
-        tools:ignore="TextContrastCheck"
-        tools:layout_editor_absoluteX="150dp"
-        tools:layout_editor_absoluteY="666dp" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName10"
-        android:layout_width="303dp"
-        android:layout_height="0dp"
-        android:ems="10"
-        android:hint="@string/rut"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="54dp"
-        tools:layout_editor_absoluteY="265dp" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName9"
-        android:layout_width="303dp"
-        android:layout_height="0dp"
-        android:ems="10"
-        android:hint="@string/cargo"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="54dp"
-        tools:layout_editor_absoluteY="194dp" />
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toStartOf="@+id/textView2"
+        app:layout_constraintHorizontal_bias="0.181"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/icon_back_foreground" />
 
     <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:layout_width="236dp"
+        android:layout_height="40dp"
+        android:layout_weight="10"
         android:fontFamily="sans-serif-medium"
         android:text="@string/ya_casi"
         android:textColor="@color/icons"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="116dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.682" />
 
-    <EditText
-        android:id="@+id/txt_contrasenia"
-        android:layout_width="302dp"
-        android:layout_height="53dp"
-        android:ems="10"
-        android:hint="@string/contrasenia"
-        android:inputType="textPassword"
-        tools:layout_editor_absoluteX="54dp"
-        tools:layout_editor_absoluteY="349dp" />
-
-    <EditText
-        android:id="@+id/txt_contrasenia_confirmar"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="300dp"
-        android:layout_height="62dp"
-        android:ems="10"
-        android:hint="@string/contrasenia_confirmar"
-        android:inputType="textPassword"
-        tools:layout_editor_absoluteX="54dp"
-        tools:layout_editor_absoluteY="434dp" />
+        android:layout_height="450dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="41dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="41dp"
+        android:background="@color/icons"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.403">
+
+        <EditText
+            android:id="@+id/txt_contrasenia"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:ems="10"
+            android:hint="@string/contrasenia"
+            android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/txt_contrasenia_confirmar"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:ems="10"
+            android:hint="@string/contrasenia_confirmar"
+            android:inputType="textPassword" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="10dp"
+            android:onClick="cargarImagen"
+            android:text="@string/seleccionarFoto"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="10dp"
+            android:onClick="foto"
+            android:text="@string/cargarFoto"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/ivFoto"
+            android:layout_width="129dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:background="#4A534444"
+            android:backgroundTint="@color/black"
+            android:visibility="visible"
+            tools:srcCompat="@drawable/icon_perfil_foreground"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:clickable="true"
+            android:onClick="terminosYcondiciones"
+            android:text="@string/advertencia_terminos"
+            android:textAlignment="center"
+            android:textColor="@color/purple_700" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnTerminar"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:onClick="mostrarImagen"
+        android:text="@string/btn_terminar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.755"
+        tools:ignore="TextContrastCheck" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

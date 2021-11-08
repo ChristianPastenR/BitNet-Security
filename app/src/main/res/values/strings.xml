@@ -35,8 +35,10 @@
     <string name="ya_casi">Ya casi terminas</string>
     <string name="contrasenia">Contraseña</string>
     <string name="contrasenia_confirmar">Confirmar contraseña</string>
-    <string name="btn_terminar">Terminar</string>
-
+    <string name="btn_terminar">Registrarme</string>
+    <string name="cargarFoto">Tomar una foto</string>
+    <string name="seleccionarFoto">Cargar desde galeria</string>
+    <string name="advertencia_terminos">Al registrarte, aceptas los terminos y condiciones de uso de la app.</string>
 
     <!--Drawer, no se muestran-->
     <string name="nav_draw_open">Abrir Drawer</string>
@@ -47,9 +49,20 @@
     <string name="nav_perfiles">Perfiles</string>
     <string name="nav_marcar">Marcar</string>
     <string name="nav_horario">Horario</string>
-    <string name="btn_salir">Salir</string>
+    <string name="btn_salir">Cerrar sesión</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!--Crear reporte-->
+    <string name="crear_reporte_titulo">Reporte</string>
+    <string name="empresa">Empresa</string>
+    <string name="faccion">Facción</string>
+    <string name="fecha">Fecha</string>
+    <string name="turno">Turno</string>
+    <string name="guardia">Guardia</string>
+    <string name="supervisor">Supervisor</string>
+    <string name="redactar_reporte">Novedades</string>
+    <string name="btn_cancelar_reporte">Cancelar</string>
+    <string name="btn_publicar_reporte">Enviar</string>
 
 </resources>

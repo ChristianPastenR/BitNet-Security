@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_bitnet"
-    android:onClick="btnCrearCuenta"
+    android:clickable="false"
+    android:contextClickable="false"
+    android:longClickable="false"
     tools:context=".MainActivity">
 
     <ImageView
@@ -27,13 +29,13 @@
         android:layout_marginBottom="28dp"
         android:onClick="login"
         android:text="@string/btn_ingresar"
-        app:layout_constraintBottom_toTopOf="@+id/checkBox"
+        app:layout_constraintBottom_toTopOf="@+id/cbRecordar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_clave" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/cbRecordar"
         android:layout_width="158dp"
         android:layout_height="0dp"
         android:layout_marginBottom="48dp"
@@ -58,8 +60,9 @@
         android:textColor="#FAFAFA"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/checkBox"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+        app:layout_constraintStart_toStartOf="@+id/cbRecordar"
+        app:layout_constraintTop_toBottomOf="@+id/cbRecordar"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/input_usuario"
