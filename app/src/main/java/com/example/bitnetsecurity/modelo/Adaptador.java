@@ -48,13 +48,15 @@ public class Adaptador extends BaseAdapter {
         TextView tvJornada = (TextView) view.findViewById(R.id.tvJornada);
 
         Usuario u = (Usuario) getItem(i);
+
         Glide.with(contexto)
                 .load(u.getUri())
                 .centerCrop()
                 .fitCenter()
                 .into(ivFoto);
-        ivFoto.getLayoutParams().height = 200;
-        ivFoto.getLayoutParams().width = 200;
+
+
+
         tvNombre.setText(u.getNombre());
         tvRut.setText(u.getRut());
         tvTelefono.setText(u.getTelefono());

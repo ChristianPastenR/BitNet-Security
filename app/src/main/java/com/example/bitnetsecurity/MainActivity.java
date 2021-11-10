@@ -17,14 +17,32 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.bitnetsecurity.modelo.ArrayListShared;
+import com.example.bitnetsecurity.modelo.Usuario;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
-
+    List<Usuario> Supervisores;
+    // List<Usuario> Guardias;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Supervisores = new ArrayList<>();
+        Supervisores.add(new Usuario("1","SERVAT","123","Dominga","Ema","+56 952161533","Supervisor","Full-time","123","",1));
+        Supervisores.add(new Usuario("2","SERVAT","456","Ema","Dominga","+56 984165321","Supervisor","Full-time","456","",1));
+        /**
+        Guardias = new ArrayList<>();
+
+        Guardias.add(new Usuario("1","SERVAT","11.111.111-1","Juanito","Perez","+56 989794112","Supervisor","Full-time","123","",1));
+        Guardias.add(new Usuario("2","SERVAT","22.222.222-2","Pablito","Rojas","+56 952165431","Supervisor","Full-time","123","",1));
+        **/
+        ArrayListShared.writeArray(getApplicationContext(),Supervisores);
 
     }
 
@@ -39,7 +57,39 @@ public class MainActivity extends AppCompatActivity {
         String passtxt = pass.getText().toString();
         System.out.println(passtxt);
 
+        try {
+            Supervisores = ArrayListShared.readArray(this);
+            for (Usuario u : Supervisores
+            ) {
+
+                if(usertxt.equals(u.getRut()) && passtxt.equals(u.getContrasenia())){
+
+                    CheckBox cbRecuerdame = (CheckBox)findViewById(R.id.cbRecordar);
+                    boolean check = cbRecuerdame.isChecked();
+                    if(check==true){
+                        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(this);
+                        SharedPreferences.Editor editor = datos.edit();
+                        editor.putString("user",usertxt);
+                        editor.apply();
+                    }
+                    Intent i = new Intent(this,principal.class);
+                    startActivity(i);
+                    break;
+                }else if(usertxt.equals(u.getRut())&& passtxt.equals("")){
+                    Intent i = new Intent(this,registro.class);
+                    startActivity(i);
+                }else{
+                    Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }catch (Exception e){
+            System.out.println("ERROR EN LA CARGA");
+
+        }
+
         //Mediante la validacion enviar al layout principal
+        /**
         if(usertxt.equals("user") && passtxt.equals("123")){
 
             CheckBox cbRecuerdame = (CheckBox)findViewById(R.id.cbRecordar);
@@ -59,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
         }else{
             Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show();
         }
+         **/
 
     }
 

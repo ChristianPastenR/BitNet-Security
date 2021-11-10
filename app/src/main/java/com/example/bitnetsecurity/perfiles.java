@@ -27,7 +27,7 @@ public class perfiles extends Fragment {
 
     }
 
-    public ArrayList<Usuario> usuarios(){
+    public ArrayList<Usuario> supervisores(){
         usuarios = new ArrayList<>();
         usuarios.add(new Usuario("","","19.125.157-1","Christian","Pasten","+569 52161533","Guardia","Full-time","",
                 "https://firebasestorage.googleapis.com/v0/b/bitnet-739b0.appspot.com/o/images%2Ffoto.jpg?alt=media&token=88ad2434-27f7-4253-b541-231f65f0cfa1"
@@ -38,19 +38,35 @@ public class perfiles extends Fragment {
         usuarios.add(new Usuario("","","20.953.125-1","Dominga","Rojas","+569 679843","Guardia","Part-time","",
                 "https://firebasestorage.googleapis.com/v0/b/bitnet-739b0.appspot.com/o/images%2F2.jpeg?alt=media&token=f5096a73-3f68-41a0-889d-b764ba1fb5ed"
                 ,0));
-
-
-
         return usuarios;
     }
+
+    public ArrayList<Usuario> guardias(){
+        usuarios = new ArrayList<>();
+        usuarios.add(new Usuario("","","19.125.157-1","Christian","Pasten","+569 52161533","Guardia","Full-time","",
+                "https://firebasestorage.googleapis.com/v0/b/bitnet-739b0.appspot.com/o/images%2Ffoto.jpg?alt=media&token=88ad2434-27f7-4253-b541-231f65f0cfa1"
+                ,0));
+        usuarios.add(new Usuario("","","12.434.543-9","Juanito","Perez","+569 6213563","Guardia","Part-time","",
+                "https://firebasestorage.googleapis.com/v0/b/bitnet-739b0.appspot.com/o/images%2F1.jpg?alt=media&token=89d733f6-1507-4628-a50d-80ca2ed5383e"
+                ,0));
+        usuarios.add(new Usuario("","","20.953.125-1","Dominga","Rojas","+569 679843","Guardia","Part-time","",
+                "https://firebasestorage.googleapis.com/v0/b/bitnet-739b0.appspot.com/o/images%2F2.jpeg?alt=media&token=f5096a73-3f68-41a0-889d-b764ba1fb5ed"
+                ,0));
+        return usuarios;
+    }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ListView l = (ListView) view.findViewById(R.id.lvUsuarios);
-        Adaptador adaptador = new Adaptador(getContext(),usuarios());
-        l.setAdapter(adaptador);
+        ListView S = (ListView) view.findViewById(R.id.lvSupervisores);
+        Adaptador adaptador = new Adaptador(getContext(),supervisores());
+        S.setAdapter(adaptador);
+
+        ListView G = (ListView) view.findViewById(R.id.lvGuardias);
+        Adaptador adaptador1 = new Adaptador(getContext(),guardias());
+        G.setAdapter(adaptador1);
 
 
     }
