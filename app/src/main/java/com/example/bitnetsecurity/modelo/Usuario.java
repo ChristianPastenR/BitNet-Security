@@ -15,6 +15,9 @@ public class Usuario {
     private String uri;
     private int estado;
 
+    public Usuario() {
+    }
+
     public Usuario(String id, String empresa, String rut, String nombre, String apellido, String telefono, String cargo, String jornada, String contrasenia, String uri, int estado) {
         this.id = id;
         this.empresa = empresa;

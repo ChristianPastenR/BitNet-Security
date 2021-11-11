@@ -12,6 +12,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,7 +25,13 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.bitnetsecurity.modelo.ArrayListShared;
+import com.example.bitnetsecurity.modelo.Usuario;
 import com.google.android.material.navigation.NavigationView;
+
+import org.w3c.dom.Text;
+
+import java.util.List;
 
 public class principal extends AppCompatActivity {
 
@@ -34,6 +41,10 @@ public class principal extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
+
 
         //Iniciacion del layout
         setContentView(R.layout.activity_principal);
@@ -49,9 +60,68 @@ public class principal extends AppCompatActivity {
         fragmentTransaction.commit();
 
 
-        //Incorporacion del menu lateral mediante un listener
+        //Recuperar el navigationview
         NavigationView nav = (NavigationView) findViewById(R.id.nav);
+
+        try{
+            //Leer el array de usuarios del sharedPreference
+            List<Usuario> usuarios = ArrayListShared.readArray(this);
+
+            SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(this);
+            String usertxt = datos.getString("person","");
+            if(usertxt.equals("")){
+                //Accedemos a shared preferences para eliminar el user recordado
+
+                SharedPreferences.Editor editor = datos.edit();
+                editor.remove("user");
+                editor.remove("person");
+                editor.apply();
+                //finish para cerrar la app y volver a la primera pantalla
+                finish();
+            }
+            Usuario usuario = new Usuario();
+            for (Usuario u: usuarios
+                 ) {
+                if(u.getRut().equals(usertxt)){
+                    usuario = (Usuario) u;
+                    break;
+                }
+            }
+
+
+
+            //Incorporar datos del usuarios en el header del Nav
+            View headerView = nav.getHeaderView(0);
+
+            TextView navEmpresa = (TextView) headerView.findViewById(R.id.perfilEmpresa);
+            navEmpresa.setText(usuario.getEmpresa());
+            TextView navNombre = (TextView) headerView.findViewById(R.id.perfilPersona);
+            navNombre.setText(usuario.getNombre()+" "+ usuario.getApellido());
+            TextView navCargo = (TextView) headerView.findViewById(R.id.perfilCargo);
+            navCargo.setText(usuario.getCargo());
+
+        }catch(Exception e){
+            SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(this);
+            SharedPreferences.Editor editor = datos.edit();
+            editor.remove("user");
+            editor.remove("person");
+            editor.apply();
+            //finish para cerrar la app y volver a la primera pantalla
+            finish();
+        }
+
+
+
+
+
+
+
+
+        //Incorporacion del menu lateral mediante un listener
         nav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
+
+
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -106,6 +176,10 @@ public class principal extends AppCompatActivity {
             }
         });
 
+
+
+
+
     }
 
 
@@ -125,10 +199,13 @@ public class principal extends AppCompatActivity {
         SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = datos.edit();
         editor.remove("user");
+        editor.remove("person");
         editor.apply();
         //finish para cerrar la app y volver a la primera pantalla
         finish();
     }
+
+
 
 
 

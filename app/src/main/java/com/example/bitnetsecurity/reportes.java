@@ -16,12 +16,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
 
+import com.example.bitnetsecurity.modelo.Adaptador;
+import com.example.bitnetsecurity.modelo.AdaptadorReportes;
+import com.example.bitnetsecurity.modelo.ArrayListReportesShared;
+import com.example.bitnetsecurity.modelo.ArrayListShared;
+import com.example.bitnetsecurity.modelo.Reporte;
+import com.example.bitnetsecurity.modelo.Usuario;
 
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class reportes extends Fragment {
+
+    private List<Reporte> reportes;
+
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -42,5 +53,36 @@ public class reportes extends Fragment {
         });
 
         return vista;
+    }
+
+
+
+
+
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        ListView S = (ListView) view.findViewById(R.id.lvReportes);
+
+
+        try {
+            reportes = ArrayListReportesShared.readArrayReporte(getContext());
+            ArrayList<Reporte> reportesArray = new ArrayList<>();
+
+            for (Reporte r : reportes
+            ) {
+                reportesArray.add(r);
+            }
+
+            AdaptadorReportes adaptadorReportes = new AdaptadorReportes(getContext(), reportesArray);
+            S.setAdapter(adaptadorReportes);
+        }catch (Exception e){
+
+        }
+
+
+
+
     }
 }

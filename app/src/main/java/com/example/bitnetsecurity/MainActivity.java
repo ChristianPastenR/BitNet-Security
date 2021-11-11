@@ -17,7 +17,9 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.bitnetsecurity.modelo.ArrayListReportesShared;
 import com.example.bitnetsecurity.modelo.ArrayListShared;
+import com.example.bitnetsecurity.modelo.Reporte;
 import com.example.bitnetsecurity.modelo.Usuario;
 
 import java.util.ArrayList;
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     List<Usuario> Supervisores;
     // List<Usuario> Guardias;
+    List<Reporte> Reportes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +37,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Supervisores = new ArrayList<>();
+        Reportes = new ArrayList<>();
+
+        Reportes.add(new Reporte("REPORTE","reporte","reporte","Reporte","reporte","repote","reporte","asdasd","asdasd"));
+
+
+
         Supervisores.add(new Usuario("1","SERVAT","123","Dominga","Ema","+56 952161533","Supervisor","Full-time","123","",1));
         Supervisores.add(new Usuario("2","SERVAT","456","Ema","Dominga","+56 984165321","Supervisor","Full-time","456","",1));
+
+
         /**
         Guardias = new ArrayList<>();
 
         Guardias.add(new Usuario("1","SERVAT","11.111.111-1","Juanito","Perez","+56 989794112","Supervisor","Full-time","123","",1));
         Guardias.add(new Usuario("2","SERVAT","22.222.222-2","Pablito","Rojas","+56 952165431","Supervisor","Full-time","123","",1));
         **/
+        ArrayListReportesShared.writeArrayReporte(getApplicationContext(),Reportes);
+
         ArrayListShared.writeArray(getApplicationContext(),Supervisores);
 
     }
@@ -58,9 +71,11 @@ public class MainActivity extends AppCompatActivity {
         System.out.println(passtxt);
 
         try {
+            //Recuperar la List desde SharedPreferences
             Supervisores = ArrayListShared.readArray(this);
             for (Usuario u : Supervisores
             ) {
+                Toast.makeText(this, u.getNombre(), Toast.LENGTH_SHORT).show();
 
                 if(usertxt.equals(u.getRut()) && passtxt.equals(u.getContrasenia())){
 
@@ -72,6 +87,10 @@ public class MainActivity extends AppCompatActivity {
                         editor.putString("user",usertxt);
                         editor.apply();
                     }
+                    SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(this);
+                    SharedPreferences.Editor editor = datos.edit();
+                    editor.putString("person",u.getRut());
+                    editor.apply();
                     Intent i = new Intent(this,principal.class);
                     startActivity(i);
                     break;
@@ -114,11 +133,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void salir (View v){
-
         Intent i = new Intent(this,MainActivity.class);
-
         startActivity(i);
-
     }
 
     public void btnCrearCuenta (View v){

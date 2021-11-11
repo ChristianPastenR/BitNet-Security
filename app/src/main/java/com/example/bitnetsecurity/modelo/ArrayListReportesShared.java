@@ -11,16 +11,17 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArrayListShared {
+public class ArrayListReportesShared {
+
+
+    private static final String LIST_KEY = "list_reportes_key";
 
 
 
 
-    private static final String LIST_KEY = "list_key";
+    //WRITE ARRAYREPORTES EN SHAREDPREF
+    public static void writeArrayReporte(Context context, List<Reporte> list){
 
-
-    //WRITE ARRAYUSUARIOS EN SHAREDPREF
-    public static void writeArray(Context context, List<Usuario> list){
         Gson gson = new Gson();
         String jsonString = gson.toJson(list);
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
@@ -28,16 +29,12 @@ public class ArrayListShared {
         editor.putString(LIST_KEY,jsonString);
         editor.apply();
     }
-    public static List<Usuario> readArray(Context context){
+    public static List<Reporte> readArrayReporte(Context context){
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
         String jsonString = pref.getString(LIST_KEY,"");
         Gson gson = new Gson();
-        Type type = new TypeToken<ArrayList<Usuario>>() {}.getType();
-        List<Usuario> list =gson.fromJson(jsonString,type);
+        Type type = new TypeToken<ArrayList<Reporte>>() {}.getType();
+        List<Reporte> list =gson.fromJson(jsonString,type);
         return list;
     }
-
-
-
-
 }
