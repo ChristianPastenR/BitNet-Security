@@ -55,11 +55,6 @@ public class reportes extends Fragment {
         return vista;
     }
 
-
-
-
-
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

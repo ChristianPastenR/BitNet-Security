@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     List<Usuario> Supervisores;
     // List<Usuario> Guardias;
-    List<Reporte> Reportes;
+    //List<Reporte> Reportes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +37,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Supervisores = new ArrayList<>();
-        Reportes = new ArrayList<>();
+        //Reportes = new ArrayList<>();
 
-        Reportes.add(new Reporte("REPORTE","reporte","reporte","Reporte","reporte","repote","reporte","asdasd","asdasd"));
+        //Reportes.add(new Reporte("REPORTE","reporte","reporte","Reporte","reporte","repote","reporte","asdasd","asdasd"));
 
 
 
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         Guardias.add(new Usuario("1","SERVAT","11.111.111-1","Juanito","Perez","+56 989794112","Supervisor","Full-time","123","",1));
         Guardias.add(new Usuario("2","SERVAT","22.222.222-2","Pablito","Rojas","+56 952165431","Supervisor","Full-time","123","",1));
         **/
-        ArrayListReportesShared.writeArrayReporte(getApplicationContext(),Reportes);
+        //ArrayListReportesShared.writeArrayReporte(getApplicationContext(),Reportes);
 
         ArrayListShared.writeArray(getApplicationContext(),Supervisores);
 
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             Supervisores = ArrayListShared.readArray(this);
             for (Usuario u : Supervisores
             ) {
-                Toast.makeText(this, u.getNombre(), Toast.LENGTH_SHORT).show();
+
 
                 if(usertxt.equals(u.getRut()) && passtxt.equals(u.getContrasenia())){
 

@@ -25,16 +25,19 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.bitnetsecurity.modelo.ArrayListReportesShared;
 import com.example.bitnetsecurity.modelo.ArrayListShared;
+import com.example.bitnetsecurity.modelo.Reporte;
 import com.example.bitnetsecurity.modelo.Usuario;
 import com.google.android.material.navigation.NavigationView;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class principal extends AppCompatActivity {
-
+    List<Reporte> Reportes;
     //Creacion de un toolbar
     Toolbar tb;
 
@@ -42,7 +45,45 @@ public class principal extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //INICIANDO REPORTES
+        Reportes = new ArrayList<>();
+        Reportes.add(new Reporte("1","Christian Pasten","11/11/2021","SERVAT","Oficina 1","20.00-08.00hrs",
+                "Christian Pasten","Luis Rojas","             RECEPCIÓN TURNO\n" +
+                "00:30 Hrs\n" +
+                "Recepción servicio con información escrita por turno anterior.-\n" +
+                "\n" +
+                "      EDIFICIO ÁREA EXTERNA\n" +
+                "• Perímetro Chacabuco:  Ventanales frontales oficina central, cubiertos con material frágil.\n" +
+                "\n" +
+                "• 06 Focos externos quemados.\n" +
+                "\n" +
+                "• CCTV 03, 06, Ramas impiden visualización\n" +
+                "\n" +
+                "       EDIFICIO ÁREA INTERNA\n" +
+                "• Iluminación baño hombre y mujeres quemadas.\n" +
+                "\n" +
+                "• Ventanales Jefatura DIPLADE, sin manillas.\n" +
+                "\n" +
+                "• Ventana Cocina, en mal estado.\n" +
+                "\n" +
+                "                             NOVEDADES\n" +
+                "• 06:55 Hrs\n" +
+                "Ingreso personal aseo.\n" +
+                "\n" +
+                "Reportes: 07\n" +
+                "Control Visual: 08 CCTV\n" +
+                "  \n" +
+                "                             CARGO\n" +
+                "• 01 Celular Nokia SERVAT,\n" +
+                "con cargador. (Carga \uD83D\uDCAF%)\n" +
+                "Pantalla trizada.\n" +
+                "• 01 Linterna Doite.-\n" +
+                "\n" +
+                "                TERMINO SERVICIO\n" +
+                "• 07:30 Hrs Termino turno noche, conforme a lo escrito en párrafos anteriores.\n" +
+                "Cargo y CCTV completo y operativo.-"));
 
+        ArrayListReportesShared.writeArrayReporte(getApplicationContext(),Reportes);
 
 
 

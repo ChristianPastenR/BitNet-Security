@@ -17,8 +17,6 @@ public class ArrayListReportesShared {
     private static final String LIST_KEY = "list_reportes_key";
 
 
-
-
     //WRITE ARRAYREPORTES EN SHAREDPREF
     public static void writeArrayReporte(Context context, List<Reporte> list){
 

@@ -30,7 +30,7 @@ public class perfiles extends Fragment {
     public ArrayList<Usuario> supervisores(){
         usuarios = new ArrayList<>();
         usuarios.add(new Usuario("","","19.125.157-1","Christian","Pasten","+569 52161533","Guardia","Full-time","",
-                "https://firebasestorage.googleapis.com/v0/b/bitnet-739b0.appspot.com/o/images%2Ffoto.jpg?alt=media&token=88ad2434-27f7-4253-b541-231f65f0cfa1"
+                ""
                 ,0));
         usuarios.add(new Usuario("","","12.434.543-9","Juanito","Perez","+569 6213563","Guardia","Part-time","",
                 "https://firebasestorage.googleapis.com/v0/b/bitnet-739b0.appspot.com/o/images%2F1.jpg?alt=media&token=89d733f6-1507-4628-a50d-80ca2ed5383e"
@@ -44,7 +44,7 @@ public class perfiles extends Fragment {
     public ArrayList<Usuario> guardias(){
         usuarios = new ArrayList<>();
         usuarios.add(new Usuario("","","19.125.157-1","Christian","Pasten","+569 52161533","Guardia","Full-time","",
-                "https://firebasestorage.googleapis.com/v0/b/bitnet-739b0.appspot.com/o/images%2Ffoto.jpg?alt=media&token=88ad2434-27f7-4253-b541-231f65f0cfa1"
+                ""
                 ,0));
         usuarios.add(new Usuario("","","12.434.543-9","Juanito","Perez","+569 6213563","Guardia","Part-time","",
                 "https://firebasestorage.googleapis.com/v0/b/bitnet-739b0.appspot.com/o/images%2F1.jpg?alt=media&token=89d733f6-1507-4628-a50d-80ca2ed5383e"

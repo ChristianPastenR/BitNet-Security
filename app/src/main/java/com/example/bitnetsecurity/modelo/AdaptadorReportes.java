@@ -46,6 +46,13 @@ public class AdaptadorReportes extends BaseAdapter {
         TextView lvrUsuario = (TextView) view.findViewById(R.id.lvrusuario);
         TextView lvrFecha = (TextView) view.findViewById(R.id.lvrfecha);
 
+        TextView lvrempresa = (TextView) view.findViewById(R.id.lvrempresa);
+        TextView lvrfaccion = (TextView) view.findViewById(R.id.lvrfaccion);
+        TextView lvrturno = (TextView) view.findViewById(R.id.lvrturno);
+        TextView lvrggss = (TextView) view.findViewById(R.id.lvrggss);
+        TextView lvrsupervisor= (TextView) view.findViewById(R.id.lvrsupervisor);
+        TextView lvreporte = (TextView) view.findViewById(R.id.lvrreporte);
+
         try {
             Reporte r = (Reporte) getItem(i);
             /**
@@ -55,9 +62,15 @@ public class AdaptadorReportes extends BaseAdapter {
              .fitCenter()
              .into(ivFoto);
              **/
-
             lvrUsuario.setText(r.getUsuario());
             lvrFecha.setText(r.getFecha());
+            lvrempresa.setText(r.getEmpresa());
+            lvrfaccion.setText(r.getFaccion());
+            lvrturno.setText(r.getTurno());
+            lvrggss.setText(r.getGgss());
+            lvrsupervisor.setText(r.getSupervisor());
+            lvreporte.setText(r.getReporte());
+
         }catch (Exception e){
 
         }
