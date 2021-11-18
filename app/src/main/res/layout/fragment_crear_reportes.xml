@@ -27,7 +27,6 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/crearEmpresa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:boxBackgroundMode="outline"
@@ -35,15 +34,15 @@
                 app:hintTextColor="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/crearEmpresa"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="10dp"
                     android:backgroundTint="@color/icons"
-                    android:hint="@string/empresa"
 
+                    android:hint="@string/empresa"
                     android:inputType="text"
-                    android:maxLength="35"
-                    android:text="asd" />
+                    android:maxLength="35" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -170,13 +169,14 @@
             android:text="@string/btn_cancelar_reporte" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/btnenviar"
             android:layout_width="70dp"
             android:layout_height="48dp"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:layout_weight="1"
             android:backgroundTint="#4CAF50"
+            android:clickable="true"
             android:text="@string/btn_publicar_reporte" />
     </LinearLayout>
 

@@ -42,6 +42,8 @@ public class reportes extends Fragment {
         //Recuperar el boton desde el layout/vista
         Button btn = vista.findViewById(R.id.btn_crear_reporte);
 
+        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

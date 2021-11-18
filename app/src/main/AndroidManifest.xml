@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BitNetSecurity">
         <activity
+            android:name=".agregar_usuario"
+            android:exported="false" />
+        <activity
             android:name=".Usuarios"
             android:exported="false" />
         <activity

@@ -17,7 +17,7 @@ public class ArrayListReportesShared {
     private static final String LIST_KEY = "list_reportes_key";
 
 
-    //WRITE ARRAYREPORTES EN SHAREDPREF
+    //JSON WRITE ARRAYREPORTES EN SHAREDPREF
     public static void writeArrayReporte(Context context, List<Reporte> list){
 
         Gson gson = new Gson();
@@ -26,6 +26,8 @@ public class ArrayListReportesShared {
         SharedPreferences.Editor editor = pref.edit();
         editor.putString(LIST_KEY,jsonString);
         editor.apply();
+
+
     }
     public static List<Reporte> readArrayReporte(Context context){
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);

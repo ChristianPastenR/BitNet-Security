@@ -43,4 +43,15 @@
         android:layout_width="match_parent"
         android:layout_height="205dp"
         android:layout_weight="4" />
+
+    <Button
+        android:id="@+id/btnAgregarUsuario"
+        android:layout_width="154dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:clickable="false"
+        android:onClick="btnAgregar"
+        android:text="@string/btn_agregar_usuario"
+        android:visibility="invisible" />
 </LinearLayout>

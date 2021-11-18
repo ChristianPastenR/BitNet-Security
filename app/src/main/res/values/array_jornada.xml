@@ -5,5 +5,9 @@
         <item>Full-time</item>
         <item>Part-time</item>
     </string-array>
+    <string-array name="cargo">
+        <item>Supervisor</item>
+        <item>Guardia</item>
+    </string-array>
 
 </resources>

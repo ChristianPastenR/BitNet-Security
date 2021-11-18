@@ -29,12 +29,17 @@ public class ArrayListShared {
         editor.apply();
     }
     public static List<Usuario> readArray(Context context){
-        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
-        String jsonString = pref.getString(LIST_KEY,"");
-        Gson gson = new Gson();
-        Type type = new TypeToken<ArrayList<Usuario>>() {}.getType();
-        List<Usuario> list =gson.fromJson(jsonString,type);
-        return list;
+        try {
+            SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
+            String jsonString = pref.getString(LIST_KEY, "");
+            Gson gson = new Gson();
+            Type type = new TypeToken<ArrayList<Usuario>>() {
+            }.getType();
+            List<Usuario> list = gson.fromJson(jsonString, type);
+            return list;
+        }catch (Exception e){
+            return null;
+        }
     }
 
 

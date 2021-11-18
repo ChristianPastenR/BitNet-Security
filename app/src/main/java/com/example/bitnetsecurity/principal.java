@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import com.bumptech.glide.Glide;
 import com.example.bitnetsecurity.modelo.ArrayListReportesShared;
 import com.example.bitnetsecurity.modelo.ArrayListShared;
 import com.example.bitnetsecurity.modelo.Reporte;
@@ -36,55 +38,30 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class principal extends AppCompatActivity {
-    List<Reporte> Reportes;
+    private List<Reporte> Reportes;
+    private List<Usuario> Usuarios;
+
     //Creacion de un toolbar
     Toolbar tb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        try {
+            //INICIANDO REPORTES
+            Reportes = ArrayListReportesShared.readArrayReporte(this);
 
-        //INICIANDO REPORTES
-        Reportes = new ArrayList<>();
-        Reportes.add(new Reporte("1","Christian Pasten","11/11/2021","SERVAT","Oficina 1","20.00-08.00hrs",
-                "Christian Pasten","Luis Rojas","             RECEPCIÓN TURNO\n" +
-                "00:30 Hrs\n" +
-                "Recepción servicio con información escrita por turno anterior.-\n" +
-                "\n" +
-                "      EDIFICIO ÁREA EXTERNA\n" +
-                "• Perímetro Chacabuco:  Ventanales frontales oficina central, cubiertos con material frágil.\n" +
-                "\n" +
-                "• 06 Focos externos quemados.\n" +
-                "\n" +
-                "• CCTV 03, 06, Ramas impiden visualización\n" +
-                "\n" +
-                "       EDIFICIO ÁREA INTERNA\n" +
-                "• Iluminación baño hombre y mujeres quemadas.\n" +
-                "\n" +
-                "• Ventanales Jefatura DIPLADE, sin manillas.\n" +
-                "\n" +
-                "• Ventana Cocina, en mal estado.\n" +
-                "\n" +
-                "                             NOVEDADES\n" +
-                "• 06:55 Hrs\n" +
-                "Ingreso personal aseo.\n" +
-                "\n" +
-                "Reportes: 07\n" +
-                "Control Visual: 08 CCTV\n" +
-                "  \n" +
-                "                             CARGO\n" +
-                "• 01 Celular Nokia SERVAT,\n" +
-                "con cargador. (Carga \uD83D\uDCAF%)\n" +
-                "Pantalla trizada.\n" +
-                "• 01 Linterna Doite.-\n" +
-                "\n" +
-                "                TERMINO SERVICIO\n" +
-                "• 07:30 Hrs Termino turno noche, conforme a lo escrito en párrafos anteriores.\n" +
-                "Cargo y CCTV completo y operativo.-"));
+            if(Reportes.size()==0){
 
-        ArrayListReportesShared.writeArrayReporte(getApplicationContext(),Reportes);
+                ArrayListReportesShared.writeArrayReporte(getApplicationContext(), Reportes);
 
+            }
+        }catch (Exception e){
+
+        }
 
 
         //Iniciacion del layout
@@ -99,7 +76,6 @@ public class principal extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.add(R.id.contenedor, new reportes());
         fragmentTransaction.commit();
-
 
         //Recuperar el navigationview
         NavigationView nav = (NavigationView) findViewById(R.id.nav);
@@ -129,10 +105,19 @@ public class principal extends AppCompatActivity {
                 }
             }
 
+            String usuarioActual= datos.getString("person","");
+            Usuario u = buscarUsuario(usuarioActual);
+            String uri = u.getUri();
 
 
             //Incorporar datos del usuarios en el header del Nav
             View headerView = nav.getHeaderView(0);
+            CircleImageView imageView = headerView.findViewById(R.id.fotoUsuario);
+            Glide.with(this)
+                    .load(uri)
+                    .fitCenter()
+                    .centerCrop()
+                    .into(imageView);
 
             TextView navEmpresa = (TextView) headerView.findViewById(R.id.perfilEmpresa);
             navEmpresa.setText(usuario.getEmpresa());
@@ -151,16 +136,8 @@ public class principal extends AppCompatActivity {
             finish();
         }
 
-
-
-
-
-
-
-
         //Incorporacion del menu lateral mediante un listener
         nav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-
 
 
             @Override
@@ -216,20 +193,13 @@ public class principal extends AppCompatActivity {
                 }
             }
         });
-
-
-
-
-
     }
 
 
     //Incorporacion del menu del toolbar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         getMenuInflater().inflate(R.menu.menu,menu);
-
         return true;
     }
 
@@ -245,11 +215,19 @@ public class principal extends AppCompatActivity {
         //finish para cerrar la app y volver a la primera pantalla
         finish();
     }
+    public Usuario buscarUsuario(String rut){
 
+        Usuario usuario = new Usuario();
+        Usuarios = ArrayListShared.readArray(this);
+        for (Usuario u:Usuarios
+        ) {
+            if(u.getRut().equals(rut)){
+                usuario= (Usuario) u;
+                return usuario;
+            }
 
-
-
-
-
+        }
+        return null;
+    }
 
 }

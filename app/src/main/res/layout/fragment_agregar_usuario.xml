@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
+    android:orientation="vertical"
+    tools:context=".agregar_usuario">
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/rut"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/editNuevoRut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/contrasenia_temporal"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/editNuevoPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/cargo"
+        android:textSize="20sp" />
+
+    <Spinner
+        android:id="@+id/spNuevoUser"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:dropDownWidth="match_parent"
+        android:entries="@array/cargo"
+        android:spinnerMode="dialog"
+        android:textAlignment="center" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnCancelarUsuario"
+            android:layout_width="70dp"
+            android:layout_height="48dp"
+            android:layout_gravity="bottom"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="30dp"
+            android:layout_weight="1"
+            android:text="@string/btn_cancelar_reporte" />
+
+        <Button
+            android:id="@+id/btnAgregarPersona"
+            android:layout_width="70dp"
+            android:layout_height="48dp"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="30dp"
+            android:layout_weight="1"
+            android:backgroundTint="#4CAF50"
+            android:text="@string/btn_publicar_reporte" />
+    </LinearLayout>
+</LinearLayout>

@@ -26,36 +26,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
-    List<Usuario> Supervisores;
-    // List<Usuario> Guardias;
-    //List<Reporte> Reportes;
-
+    private List<Usuario> Supervisores;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Supervisores = new ArrayList<>();
-        //Reportes = new ArrayList<>();
 
-        //Reportes.add(new Reporte("REPORTE","reporte","reporte","Reporte","reporte","repote","reporte","asdasd","asdasd"));
-
-
-
-        Supervisores.add(new Usuario("1","SERVAT","123","Dominga","Ema","+56 952161533","Supervisor","Full-time","123","",1));
-        Supervisores.add(new Usuario("2","SERVAT","456","Ema","Dominga","+56 984165321","Supervisor","Full-time","456","",1));
-
-
-        /**
-        Guardias = new ArrayList<>();
-
-        Guardias.add(new Usuario("1","SERVAT","11.111.111-1","Juanito","Perez","+56 989794112","Supervisor","Full-time","123","",1));
-        Guardias.add(new Usuario("2","SERVAT","22.222.222-2","Pablito","Rojas","+56 952165431","Supervisor","Full-time","123","",1));
-        **/
-        //ArrayListReportesShared.writeArrayReporte(getApplicationContext(),Reportes);
-
+            try {
+                Supervisores = new ArrayList<>();
+                Supervisores = ArrayListShared.readArray(this);
+                System.out.println("Tamaño de lista"+Supervisores.size());
+            }catch (Exception e){
+                Supervisores = new ArrayList<>();
+                System.out.println("ERROR FATAL");
+                Supervisores.add(new Usuario("0", "SERVAT", "123", "Dominga", "Ema", "+56 952161533", "Supervisor", "Full-time", "123", "https://firebasestorage.googleapis.com/v0/b/bitnet-739b0.appspot.com/o/images%2Ffoto.jpg?alt=media&token=10730fe1-5e4d-4837-9e7a-f31a613e22a1", 1));
+                Supervisores.add(new Usuario("1", "SERVAT", "456", "Dominga", "Ema", "+56 952161533", "Guardia", "Full-time", "456", "https://firebasestorage.googleapis.com/v0/b/bitnet-739b0.appspot.com/o/images%2F2.jpeg?alt=media&token=f5096a73-3f68-41a0-889d-b764ba1fb5ed", 1));
+            }
+            /**
+                Supervisores.add(new Usuario("0", "SERVAT", "123", "Dominga", "Ema", "+56 952161533", "Supervisor", "Full-time", "123", "https://firebasestorage.googleapis.com/v0/b/bitnet-739b0.appspot.com/o/images%2Ffoto.jpg?alt=media&token=10730fe1-5e4d-4837-9e7a-f31a613e22a1", 1));
+                Supervisores.add(new Usuario("1", "SERVAT", "456", "Dominga", "Ema", "+56 952161533", "Guardia", "Full-time", "456", "https://firebasestorage.googleapis.com/v0/b/bitnet-739b0.appspot.com/o/images%2F2.jpeg?alt=media&token=f5096a73-3f68-41a0-889d-b764ba1fb5ed", 1));
+            **/
         ArrayListShared.writeArray(getApplicationContext(),Supervisores);
+
 
     }
 
@@ -75,8 +68,6 @@ public class MainActivity extends AppCompatActivity {
             Supervisores = ArrayListShared.readArray(this);
             for (Usuario u : Supervisores
             ) {
-
-
                 if(usertxt.equals(u.getRut()) && passtxt.equals(u.getContrasenia())){
 
                     CheckBox cbRecuerdame = (CheckBox)findViewById(R.id.cbRecordar);
@@ -97,9 +88,10 @@ public class MainActivity extends AppCompatActivity {
                 }else if(usertxt.equals(u.getRut())&& passtxt.equals("")){
                     Intent i = new Intent(this,registro.class);
                     startActivity(i);
-                }else{
-                    Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show();
                 }
+                else{
+                        Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show();
+                    }
 
             }
         }catch (Exception e){
