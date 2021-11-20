@@ -1,5 +1,6 @@
 package com.example.bitnetsecurity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -7,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,8 +25,9 @@ import java.util.List;
 
 
 public class agregar_usuario extends Fragment {
-    Usuario u;
+
     List<Usuario> usuarios;
+    List<Usuario> usuarios2;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +47,18 @@ public class agregar_usuario extends Fragment {
 
 
         return inflater.inflate(R.layout.fragment_agregar_usuario, container, false);
+    }
+    public Usuario buscarUsuario(String rut){
+        Usuario usuario = new Usuario();
+        usuarios = ArrayListShared.readArray(getActivity());
+        for (Usuario u:usuarios
+        ) {
+            if(u.getRut().equals(rut)){
+                usuario= (Usuario) u;
+                return usuario;
+            }
+        }
+        return null;
     }
 
     @Override
@@ -65,6 +80,10 @@ public class agregar_usuario extends Fragment {
             public void onClick(View v) {
                 try {
 
+                    SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getActivity());
+                    String usertxt = datos.getString("person","");
+
+
 
                     EditText ed1 = getActivity().findViewById(R.id.editNuevoRut);
                     String rut = ed1.getText().toString();
@@ -78,13 +97,28 @@ public class agregar_usuario extends Fragment {
                     if (rut.equals("") || pass.equals("") || cargo.equals("")) {
                         Toast.makeText(getActivity(), "Campos obligatorios", Toast.LENGTH_SHORT).show();
                     } else {
-                        usuarios = ArrayListShared.readArray(getActivity());
-                        u = new Usuario("", "", rut, "", "", "", cargo, "", pass, "", 0);
-                        usuarios.add(u);
-                        ArrayListShared.writeArray(getActivity(), usuarios);
-                        Toast.makeText(getActivity(), "Usuario agregado", Toast.LENGTH_SHORT).show();
-                        FragmentManager fm = getActivity().getSupportFragmentManager();
-                        fm.beginTransaction().replace(R.id.contenedor,new perfiles()).commit();
+                        usuarios2 = ArrayListShared.readArray(getActivity());
+                        Usuario nuevo = new Usuario();
+                        Usuario u1 = (Usuario) buscarUsuario(usertxt);
+                        if(u1!=null){
+                            nuevo.setEmpresa(u1.getEmpresa());
+                            nuevo.setRut(rut);
+                            nuevo.setCargo(cargo);
+                            nuevo.setContrasenia(pass);
+                            nuevo.setEstado(0);
+
+                            System.out.println(nuevo.toString());
+
+                            usuarios2.add(nuevo);
+                            System.out.println(nuevo.toString());
+                            ArrayListShared.writeArray(getActivity(), usuarios2);
+                            Toast.makeText(getActivity(), "Usuario agregado", Toast.LENGTH_SHORT).show();
+                            FragmentManager fm = getActivity().getSupportFragmentManager();
+                            fm.beginTransaction().replace(R.id.contenedor,new perfiles()).commit();
+                        }
+
+
+
 
                     }
                 }catch (Exception e){

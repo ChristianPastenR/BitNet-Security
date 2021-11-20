@@ -15,6 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BitNetSecurity">
         <activity
+            android:name=".registroExito"
+            android:exported="false"
+            android:label="@string/title_activity_registro_exito"
+            android:theme="@style/Theme.BitNetSecurity.NoActionBar" />
+        <activity
             android:name=".agregar_usuario"
             android:exported="false" />
         <activity

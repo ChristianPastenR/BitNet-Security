@@ -52,17 +52,12 @@ public class principal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         try {
             //INICIANDO REPORTES
-            Reportes = ArrayListReportesShared.readArrayReporte(this);
+            Reportes = new ArrayList<>();
+            ArrayListReportesShared.writeArrayReporte(getApplicationContext(), Reportes);
 
-            if(Reportes.size()==0){
-
-                ArrayListReportesShared.writeArrayReporte(getApplicationContext(), Reportes);
-
-            }
         }catch (Exception e){
 
         }
-
 
         //Iniciacion del layout
         setContentView(R.layout.activity_principal);
@@ -88,7 +83,6 @@ public class principal extends AppCompatActivity {
             String usertxt = datos.getString("person","");
             if(usertxt.equals("")){
                 //Accedemos a shared preferences para eliminar el user recordado
-
                 SharedPreferences.Editor editor = datos.edit();
                 editor.remove("user");
                 editor.remove("person");
@@ -122,7 +116,15 @@ public class principal extends AppCompatActivity {
             TextView navEmpresa = (TextView) headerView.findViewById(R.id.perfilEmpresa);
             navEmpresa.setText(usuario.getEmpresa());
             TextView navNombre = (TextView) headerView.findViewById(R.id.perfilPersona);
-            navNombre.setText(usuario.getNombre()+" "+ usuario.getApellido());
+            String nombreBundle;
+            String apellidoBundle;
+            Bundle paquete =getIntent().getExtras();
+            if(paquete!=null) {
+                nombreBundle= paquete.getString("nombre");
+                apellidoBundle= paquete.getString("apellido");
+                navNombre.setText(nombreBundle+" "+apellidoBundle);
+            }
+
             TextView navCargo = (TextView) headerView.findViewById(R.id.perfilCargo);
             navCargo.setText(usuario.getCargo());
 
@@ -138,7 +140,6 @@ public class principal extends AppCompatActivity {
 
         //Incorporacion del menu lateral mediante un listener
         nav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-
 
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -160,9 +161,6 @@ public class principal extends AppCompatActivity {
                 return false;
             }
         });
-
-
-
 
         //Habilitar el DrawerLayout
         DrawerLayout dl = (DrawerLayout) findViewById(R.id.drawer_layout_principal);
@@ -193,8 +191,7 @@ public class principal extends AppCompatActivity {
                 }
             }
         });
-    }
-
+    }//OnCreate
 
     //Incorporacion del menu del toolbar
     @Override
@@ -202,7 +199,6 @@ public class principal extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu,menu);
         return true;
     }
-
 
     //Accion boton salir
     public void salir (View v){
@@ -213,10 +209,10 @@ public class principal extends AppCompatActivity {
         editor.remove("person");
         editor.apply();
         //finish para cerrar la app y volver a la primera pantalla
-        finish();
+        Intent i = new Intent(this,MainActivity.class);
+        startActivity(i);
     }
     public Usuario buscarUsuario(String rut){
-
         Usuario usuario = new Usuario();
         Usuarios = ArrayListShared.readArray(this);
         for (Usuario u:Usuarios
@@ -225,7 +221,6 @@ public class principal extends AppCompatActivity {
                 usuario= (Usuario) u;
                 return usuario;
             }
-
         }
         return null;
     }

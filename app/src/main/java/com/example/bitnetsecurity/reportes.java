@@ -54,21 +54,25 @@ public class reportes extends Fragment {
             }
         });
 
+
+
+
+
         return vista;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ListView S = (ListView) view.findViewById(R.id.lvReportes);
-
 
         try {
+            ListView S = (ListView)view.findViewById(R.id.lvReportes);
             reportes = ArrayListReportesShared.readArrayReporte(getContext());
             ArrayList<Reporte> reportesArray = new ArrayList<>();
 
             for (Reporte r : reportes
             ) {
+                System.out.println(r.getFecha());
                 reportesArray.add(r);
             }
 
@@ -77,7 +81,6 @@ public class reportes extends Fragment {
         }catch (Exception e){
 
         }
-
 
 
 

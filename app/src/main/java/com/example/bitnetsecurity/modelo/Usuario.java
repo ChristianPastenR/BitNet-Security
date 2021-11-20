@@ -1,6 +1,8 @@
 package com.example.bitnetsecurity.modelo;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable {
 
     private String id;
     private String empresa;
@@ -118,5 +120,22 @@ public class Usuario {
 
     public void setEstado(int estado) {
         this.estado = estado;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id='" + id + '\'' +
+                ", empresa='" + empresa + '\'' +
+                ", rut='" + rut + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", cargo='" + cargo + '\'' +
+                ", jornada='" + jornada + '\'' +
+                ", contrasenia='" + contrasenia + '\'' +
+                ", uri='" + uri + '\'' +
+                ", estado=" + estado +
+                '}';
     }
 }

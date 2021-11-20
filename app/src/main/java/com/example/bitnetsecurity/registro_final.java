@@ -11,18 +11,25 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Html;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.bitnetsecurity.modelo.ArrayListShared;
+import com.example.bitnetsecurity.modelo.Reporte;
+import com.example.bitnetsecurity.modelo.Usuario;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
+import java.util.List;
 
 public class registro_final extends AppCompatActivity {
+
+    private List<Usuario> Usuarios;
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
     static final int GALLERY_INTENT = 2;
@@ -105,7 +112,30 @@ public class registro_final extends AppCompatActivity {
             });
         }
     }
+    public void terminarRegistro(View v){
 
+        EditText pass1 = this.findViewById(R.id.txt_contrasenia);
+        String passString1 = pass1.getText().toString();
+        EditText pass2 = this.findViewById(R.id.txt_contrasenia_confirmar);
+        String passString2 = pass1.getText().toString();
+
+        if(passString1.equals(passString2)){
+            Bundle paquete =getIntent().getExtras();
+            if(paquete!=null) {
+                Usuario u = (Usuario) paquete.getSerializable("usuario");
+                u.setContrasenia(passString1);
+                u.setEstado(1);
+                Usuarios = ArrayListShared.readArray(this);
+                Usuarios.add(u);
+                ArrayListShared.writeArray(this,Usuarios);
+                Intent i = new Intent(this,registroExito.class);
+                startActivity(i);
+
+            }
+        }
+
+
+    }
     public void atras (View v){
         Intent i = new Intent(this,registro.class);
         startActivity(i);

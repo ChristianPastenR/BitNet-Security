@@ -84,6 +84,9 @@ public class crear_reportes extends Fragment {
                             reportes = ArrayListReportesShared.readArrayReporte(getContext());
                             reportes.add(r);
                             ArrayListReportesShared.writeArrayReporte(getActivity(),reportes);
+                            FragmentManager fm = getActivity().getSupportFragmentManager();
+                            fm.beginTransaction().replace(R.id.contenedor,new reportes()).commit();
+
                         }
 
                     }catch (Exception e){
